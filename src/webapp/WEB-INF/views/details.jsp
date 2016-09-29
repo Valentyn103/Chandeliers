@@ -20,11 +20,10 @@
             <div class="container">
                 <div class="nav navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Магазины</a></li>
-                        <li><a href="#">Доставка</a></li>
-                        <li><a href="#">Оплата</a></li>
-                        <li><a href="#">О компании</a></li>
-                        <li><a href="#">Контакты</a></li>
+                        <li><a href="/shops">Магазины</a></li>
+                        <li><a href="/delivery">Доставка</a></li>
+                        <li><a href="/payment">Оплата</a></li>
+                        <li><a href="/company">О компании</a></li>
                     </ul>
                     <sec:authorize access="isAuthenticated()">
                         <ul class="nav navbar-nav navbar-right">
@@ -91,10 +90,10 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-sm-3 col-md-3">
+                <div class="col-sm-12 col-sm-5 col-md-4 col-lg-3">
                     <img src="${image}" alt="" style="width: 290px; height: 290px;">
                 </div>
-                <div class="col-sm-5 col-md-5" style="margin-left: 15px;">
+                <div class="col-sm-4 col-sm-5 col-md-5 col-lg-5" style="margin-left: 15px;">
                     <h1 style="margin-top: 0px;">${category} ${firm} ${article}</h1>
                     <hr/>
                     <h1>${unitcost} грн
@@ -112,10 +111,15 @@
 
                     <h3 style="color: green">Есть в наличии</h3>
                     <hr/>
-                    <p>${info}</p>
+                    <p>Дополнительная информация: ${info}</p>
                 </div>
-                <div class="col-sm-3 col-md-3" style="border-left: 1px solid #e5e5e5; height: 180px;">
-                    Доставка
+                <div class="col-sm-2 col-sm-2 col-md-2 col-lg-3" style="border-left: 1px solid #e5e5e5; height: 280px;">
+                    <h3><b>Доставка</b></h3>
+                    <h5>Новая почта, самовывоз</h5>
+                    <h3><b>Оплата</b></h3>
+                    <h5>Оплата через Приват24, Наличными, Безналичными</h5>
+                    <h3><b>Гарантия</b></h3>
+                    <h5>Обмен/возврат товара в течение 14 дней</h5>
                 </div>
             </div>
         </div>
@@ -126,7 +130,6 @@
                     <div class="tabs">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#tab-1" data-toggle="tab">Характеристики</a></li>
-                            <li><a href="#tab-2" data-toggle="tab">Отзывы</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="tab-1">
@@ -139,6 +142,10 @@
                                     <tr>
                                         <th scope="row">Производитель</th>
                                         <td>${firm}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Стиль</th>
+                                        <td>${style}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Высота, мм</th>
@@ -155,6 +162,26 @@
                                     <tr>
                                         <th scope="row">Мощность, Вт</th>
                                         <td>${power}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Патрон</th>
+                                        <td>${cartridge}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Цвет каркаса</th>
+                                        <td>${bodycolor}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Материал каркаса</th>
+                                        <td>${bodymaterial}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Цвет плафона</th>
+                                        <td>${plafoncolor}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Материал плафона</th>
+                                        <td>${plafonmaterial}</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -239,11 +266,10 @@
     <div class="row">
         <div class="col-xs-8">
             <ul class="list-unstyled list-inline pull-left">
-                <li><a href="#">Магазины</a></li>
-                <li><a href="#">Доставка</a></li>
-                <li><a href="#">Оплата</a></li>
-                <li><a href="#">О компании</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li><a href="/shops">Магазины</a></li>
+                <li><a href="/delivery">Доставка</a></li>
+                <li><a href="/payment">Оплата</a></li>
+                <li><a href="/company">О компании</a></li>
             </ul>
         </div>
         <div class="col-xs-4">

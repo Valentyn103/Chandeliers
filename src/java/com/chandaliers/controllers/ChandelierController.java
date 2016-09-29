@@ -1,8 +1,6 @@
 package com.chandaliers.controllers;
 
-import com.chandaliers.models.Category;
-import com.chandaliers.models.Chandelier;
-import com.chandaliers.models.Firm;
+import com.chandaliers.models.*;
 import com.chandaliers.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -33,6 +31,17 @@ public class ChandelierController {
     @Autowired
     private ImageService imageService;
 
+    @Autowired
+    private CartridgeService cartridgeService;
+
+    @Autowired
+    private StyleService styleService;
+
+    @Autowired
+    private ColorService colorService;
+
+    @Autowired
+    private MaterialService materialService;
     @RequestMapping(value = "/admin/addchan")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView main(HttpSession session) {
@@ -40,7 +49,10 @@ public class ChandelierController {
         model.setViewName("Admin/chandelierAdd");
         model.addObject("category", categoryService.loadCategoriesList());
         model.addObject("firm", firmService.loadFirmList());
-
+        model.addObject("cartridge",cartridgeService.loadCartridgeList());
+        model.addObject("style",styleService.loadStyleList());
+        model.addObject("color",colorService.loadColorList());
+        model.addObject("material",materialService.loadMaterialList());
         return model;
     }
 
@@ -55,10 +67,22 @@ public class ChandelierController {
                                 @RequestParam(value = "info") String info,
                                 @RequestParam(value = "category") String category,
                                 @RequestParam(value = "firm") String firm,
+                                @RequestParam(value = "cartridge") String cartridge,
+                                @RequestParam(value = "style") String style,
+                                @RequestParam(value = "bodycolor") String bodycolor,
+                                @RequestParam(value = "bodymaterial") String bodymaterial,
+                                @RequestParam(value = "plafoncolor") String plafoncolor,
+                                @RequestParam(value = "plafonmaterial") String plafonmaterial,
                                 @RequestParam(value = "file") MultipartFile imgFile
     ) {
         Category category1 = categoryService.getCategoryByName(category);
         Firm firm1 = firmService.getFirmByName(firm);
+        Style style1 = styleService.getStyleByName(style);
+        Cartridge cartridge1 = cartridgeService.getCartridgeByName(cartridge);
+        Color bodyColor1 = colorService.getColorByName(bodycolor);
+        Material bodymaterial1 = materialService.getMaterialByName(bodymaterial);
+        Color plafonColor1 = colorService.getColorByName(plafoncolor);
+        Material plafonMaterial1 = materialService.getMaterialByName(plafonmaterial);
         Chandelier chandelier = new Chandelier();
         chandelier.setArticle(articul);
         chandelier.setUnitCost(unitcost);
@@ -69,6 +93,12 @@ public class ChandelierController {
         chandelier.setInfo(info);
         chandelier.setCategory(category1);
         chandelier.setFirm(firm1);
+        chandelier.setCartridge(cartridge1);
+        chandelier.setStyle(style1);
+        chandelier.setBodycolor(bodyColor1);
+        chandelier.setBodymaterial(bodymaterial1);
+        chandelier.setPlafoncolor(plafonColor1);
+        chandelier.setPlafonmaterial(plafonMaterial1);
         String fileName = imageService.uploadImage(imgFile);
         chandelier.setImage(fileName);
         service.addChandelier(chandelier);
@@ -87,6 +117,13 @@ public class ChandelierController {
         modelAndView.addObject("power", chandelier.getPower());
         modelAndView.addObject("image", imageService.generateImageUrl(chandelier));
         modelAndView.addObject("lamps", chandelier.getNumber_lamp());
+        modelAndView.addObject("style",chandelier.getStyle().getName());
+        modelAndView.addObject("cartridge",chandelier.getCartridge().getName());
+        modelAndView.addObject("bodycolor",chandelier.getBodycolor().getName());
+        modelAndView.addObject("bodymaterial",chandelier.getBodymaterial().getName());
+        modelAndView.addObject("plafoncolor",chandelier.getPlafoncolor().getName());
+        modelAndView.addObject("plafonmaterial",chandelier.getPlafonmaterial().getName());
+
         Category category = chandelier.getCategory();
         Firm firm = chandelier.getFirm();
         modelAndView.addObject("category", category.getName());

@@ -20,11 +20,10 @@ ${Hello}
             <div class="container">
                 <div class="nav navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Магазины</a></li>
-                        <li><a href="#">Доставка</a></li>
-                        <li><a href="#">Оплата</a></li>
-                        <li><a href="#">О компании</a></li>
-                        <li><a href="#">Контакты</a></li>
+                        <li><a href="/shops">Магазины</a></li>
+                        <li><a href="/delivery">Доставка</a></li>
+                        <li><a href="/payment">Оплата</a></li>
+                        <li><a href="/company">О компании</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/personal">Личный кабинет</a></li>
@@ -110,11 +109,10 @@ ${Hello}
     <div class="row">
         <div class="col-xs-8">
             <ul class="list-unstyled list-inline pull-left">
-                <li><a href="#">Магазины</a></li>
-                <li><a href="#">Доставка</a></li>
-                <li><a href="#">Оплата</a></li>
-                <li><a href="#">О компании</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li><a href="/shops">Магазины</a></li>
+                <li><a href="/delivery">Доставка</a></li>
+                <li><a href="/payment">Оплата</a></li>
+                <li><a href="/company">О компании</a></li>
             </ul>
         </div>
         <div class="col-xs-4">

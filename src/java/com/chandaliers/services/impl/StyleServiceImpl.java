@@ -4,9 +4,13 @@ import com.chandaliers.dao.StyleDao;
 import com.chandaliers.models.Style;
 import com.chandaliers.services.StyleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class StyleServiceImpl implements StyleService {
 
     @Autowired

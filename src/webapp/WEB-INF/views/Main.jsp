@@ -22,11 +22,10 @@
             <div class="container">
                 <div class="nav navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Магазины</a></li>
-                        <li><a href="#">Доставка</a></li>
-                        <li><a href="#">Оплата</a></li>
-                        <li><a href="#">О компании</a></li>
-                        <li><a href="#">Контакты</a></li>
+                        <li><a href="/shops">Магазины</a></li>
+                        <li><a href="/delivery">Доставка</a></li>
+                        <li><a href="/payment">Оплата</a></li>
+                        <li><a href="/company">О компании</a></li>
                     </ul>
                     <sec:authorize access="isAuthenticated()">
                         <ul class="nav navbar-nav navbar-right">
@@ -75,12 +74,14 @@
             <div class="container" style="display: flex">
                 <h1><a href="/" style="color:white; text-decoration: none; cursor: auto;">VIP</a></h1>
                 <div class="col-lg-6" style="margin-top: 20px; margin-left: 10px">
+                    <form name="find" action="/find" method="post">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Поиск">
+                        <input type="text" class="form-control" name="find" placeholder="Поиск">
                         <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button">Поиск <span class="glyphicon glyphicon-search"/> </button>
+                        <button class="btn btn-secondary"  type="submit">Поиск <span class="glyphicon glyphicon-search"/> </button>
                       </span>
                     </div>
+                        </form>
                 </div>
                 <div class="col-lg-6">
                     <button
@@ -134,6 +135,29 @@
                                                     <td>
                                                         <label>
                                                             <input name="category" value="${item.name}"
+                                                                   type="checkbox">${item.name}
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapseStyle">Стиль</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseStyle" class="panel-collapse collapse in">
+                                    <div class="panel-body checkbox" style="margin-top: 0px; margin-bottom: 0px">
+                                        <table class="table">
+                                            <c:forEach items="${style}" var="item">
+                                                <tr>
+                                                    <td>
+                                                        <label>
+                                                            <input name="style" value="${item.name}"
                                                                    type="checkbox">${item.name}
                                                         </label>
                                                     </td>
@@ -203,6 +227,123 @@
                                            data-slider-max="${maxHeight}" data-slider-step="5"
                                            data-slider-value="[${minHeight},${maxHeight}]"/></div>
                             </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapseCartridge">Патрон</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseCartridge" class="panel-collapse collapse">
+                                    <div class="panel-body checkbox" style="margin-top: 0px; margin-bottom: 0px">
+                                        <table class="table">
+                                            <c:forEach items="${cartridge}" var="item">
+                                                <tr>
+                                                    <td>
+                                                        <label>
+                                                            <input name="cartridge" value="${item.name}"
+                                                                   type="checkbox">${item.name}
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapseBodyColor">Цвет каркаса</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseBodyColor" class="panel-collapse collapse">
+                                    <div class="panel-body checkbox" style="margin-top: 0px; margin-bottom: 0px">
+                                        <table class="table">
+                                            <c:forEach items="${color}" var="item">
+                                                <tr>
+                                                    <td>
+                                                        <label>
+                                                            <input name="bodycolor" value="${item.name}"
+                                                                   type="checkbox">${item.name}
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapseBodyMaterial">Материал каркаса</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseBodyMaterial" class="panel-collapse collapse">
+                                    <div class="panel-body checkbox" style="margin-top: 0px; margin-bottom: 0px">
+                                        <table class="table">
+                                            <c:forEach items="${material}" var="item">
+                                                <tr>
+                                                    <td>
+                                                        <label>
+                                                            <input name="bodymaterial" value="${item.name}"
+                                                                   type="checkbox">${item.name}
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapsePlafonColor">Цвет плафона</a>
+                                    </h4>
+                                </div>
+                                <div id="collapsePlafonColor" class="panel-collapse collapse">
+                                    <div class="panel-body checkbox" style="margin-top: 0px; margin-bottom: 0px">
+                                        <table class="table">
+                                            <c:forEach items="${color}" var="item">
+                                                <tr>
+                                                    <td>
+                                                        <label>
+                                                            <input name="plafoncolor" value="${item.name}"
+                                                                   type="checkbox">${item.name}
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapsePlafonMaterial">Материал плафона</a>
+                                    </h4>
+                                </div>
+                                <div id="collapsePlafonMaterial" class="panel-collapse collapse">
+                                    <div class="panel-body checkbox" style="margin-top: 0px; margin-bottom: 0px">
+                                        <table class="table">
+                                            <c:forEach items="${material}" var="item">
+                                                <tr>
+                                                    <td>
+                                                        <label>
+                                                            <input name="plafonmaterial" value="${item.name}"
+                                                                   type="checkbox">${item.name}
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                             <button style="margin-top: 10px;" class=" btn btn-lg btn-primary btn-block"
                                     type="submit">Применить
                             </button>
@@ -210,44 +351,50 @@
                     </form>
                 </div>
                 <div class="col-sm-9 col-md-9">
-                    <div class="dropdown" style="float: right; margin-right: 15px;">
-                        Сортировка :
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownsort"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Новинки
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" id="dropdown-menusort" aria-labelledby="dropdownMenu1">
-                            <li><a href="#">От дешевых к дорогим</a></li>
-                            <li><a href="#">От дорогих к дешевым</a></li>
-                            <li><a href="#">Новинки</a></li>
-                        </ul>
-                    </div>
+                    <%--<div class="dropdown" style="float: right; margin-right: 15px;">--%>
+                        <%--Сортировка :--%>
+                        <%--<button class="btn btn-default dropdown-toggle" type="button" id="dropdownsort"--%>
+                                <%--data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">--%>
+                            <%--Новинки--%>
+                            <%--<span class="caret"></span>--%>
+                        <%--</button>--%>
+                        <%--<ul class="dropdown-menu" id="dropdown-menusort" aria-labelledby="dropdownMenu1">--%>
+                            <%--<li><a href="#">От дешевых к дорогим</a></li>--%>
+                            <%--<li><a href="#">От дорогих к дешевым</a></li>--%>
+                            <%--<li><a href="#">Новинки</a></li>--%>
+                        <%--</ul>--%>
+                    <%--</div>--%>
                     <h1 style="margin-top: 0px">Люстры</h1>
 
                 </div>
                 ${info}
                 <div class="row col-sm-9 col-md-9" style="padding-right: 0px">
                     <c:forEach items="${chandelier}" var="item">
-                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                            <div class="thumbnail">
-                                <div style="width: 170px; height: 170px;  margin: auto;" >
-                                <img src="${imageService.generateImageUrl(item)}" alt="" style="width: 170px; height: auto;" ></div>
-                                <div class="caption">
-                                    <h4 style="word-break: break-all; height: 50px"><a
-                                            href="/chandelier/${item.article}">${item.category.name} ${item.firm.name} ${item.article}</a>
-                                    </h4>
-                                    <p>${item.unitCost} грн</p>
-                                    <a href="/chandelier/${item.article}" class="btn btn-info" style="display: block;">Подробнее
-                                        <i
-                                                class="glyphicon glyphicon-arrow-right"></i>
-                                    </a>
-                                    <a href="/chandelier/${item.article}" style="margin-top: 5px; display: block;"
-                                       class="btn btn-success">Купить <i
-                                            class="glyphicon glyphicon-shopping-cart"></i> </a>
+                        <form name="buy" action="/buy/${item.article}" method="post" style="margin-bottom: 0px;">
+                            <input id="quantity" name="quantity" type="number" value="1"
+                                   style="display: none;">
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                <div class="thumbnail">
+                                    <div style="width: 170px; height: 170px;  margin: auto;">
+                                        <img src="${imageService.generateImageUrl(item)}" alt=""
+                                             style="width: 170px; height: auto;"></div>
+                                    <div class="caption">
+                                        <h4 style="word-break: break-all; height: 50px"><a
+                                                href="/chandelier/${item.article}">${item.category.name} ${item.firm.name} ${item.article}</a>
+                                        </h4>
+                                        <p>${item.unitCost} грн</p>
+                                        <a href="/chandelier/${item.article}" class="btn btn-info"
+                                           style="display: block;">Подробнее
+                                            <i
+                                                    class="glyphicon glyphicon-arrow-right"></i>
+                                        </a>
+                                        <button type="submit" style="margin-top: 5px; display: block; width:100%;"
+                                                class="btn btn-success">Купить <i
+                                                class="glyphicon glyphicon-shopping-cart"></i></button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </c:forEach>
                 </div>
             </div>
@@ -259,11 +406,10 @@
     <div class="row">
         <div class="col-xs-8">
             <ul class="list-unstyled list-inline pull-left">
-                <li><a href="#">Магазины</a></li>
-                <li><a href="#">Доставка</a></li>
-                <li><a href="#">Оплата</a></li>
-                <li><a href="#">О компании</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li><a href="/shops">Магазины</a></li>
+                <li><a href="/delivery">Доставка</a></li>
+                <li><a href="/payment">Оплата</a></li>
+                <li><a href="/company">О компании</a></li>
             </ul>
         </div>
         <div class="col-xs-4">
@@ -302,13 +448,14 @@
                                     <td style="text-align: center; vertical-align: middle;"><img
                                             src="${imageService.generateImageUrl(item.chandelier)}" alt=""
                                             style="width: 145px; height: 115px;"></td>
-                                    <td style="text-align: center; vertical-align: middle;"><a href="/chandelier/${item.chandelier.article}">${item.chandelier.category.name} ${item.chandelier.firm.name}
+                                    <td style="text-align: center; vertical-align: middle;"><a
+                                            href="/chandelier/${item.chandelier.article}">${item.chandelier.category.name} ${item.chandelier.firm.name}
                                             ${item.chandelier.article}</a></td>
                                     <td style="text-align: center; vertical-align: middle;">${item.chandelier.unitCost}</td>
                                     <td style="text-align: center; vertical-align: middle;">${item.quantity}</td>
                                     <td style="text-align: center; vertical-align: middle;">${item.chandelier.unitCost * item.quantity}</td>
                                     <td style="text-align: center; vertical-align: middle;">
-                                        <a class="glyphicon glyphicon-remove-circle"  href="/remove/${item.orderItemId}"
+                                        <a class="glyphicon glyphicon-remove-circle" href="/remove/${item.orderItemId}"
                                            style="text-decoration: none; cursor: auto;"> </a>
                                     </td>
                                 </tr>

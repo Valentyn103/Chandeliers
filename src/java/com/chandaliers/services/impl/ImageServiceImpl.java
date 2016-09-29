@@ -3,7 +3,6 @@ package com.chandaliers.services.impl;
 import com.chandaliers.models.Chandelier;
 import com.chandaliers.services.ImageService;
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,12 +15,9 @@ import java.io.IOException;
 @Transactional
 public class ImageServiceImpl implements ImageService {
 
-    public static final Logger LOG = Logger.getLogger(ImageServiceImpl.class);
-
     public static final String PATH_LOCAL_CHAN = "resources/img/chandelier/";
     public static final String GET_IMAGE_URL = "/image/chandalier/";
     public static final String BASE_URL = System.getProperty("catalina.home") + "/";
-    //  System.getProperty("catalina.base");
     public static final String[] arrTypes = {"img", "png", "jpg", "jpeg"};
 
     @Override

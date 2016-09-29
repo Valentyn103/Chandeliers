@@ -199,6 +199,7 @@ public class Chandelier implements java.io.Serializable {
         this.plafoncolor = plafoncolor;
     }
 
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "material_plafon_id", nullable = false)
     public Material getPlafonmaterial() {
         return plafonmaterial;

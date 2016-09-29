@@ -1,4 +1,4 @@
-package com.chandaliers.controllers.Admin;
+package com.chandaliers.controllers;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class Admin {
+public class AdminController {
     @RequestMapping(value = "/admin")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView main(HttpSession session) {

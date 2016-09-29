@@ -89,13 +89,17 @@ public class OrderController {
         modelAndView.addObject("width", chan.getWidth());
         modelAndView.addObject("power", chan.getPower());
         modelAndView.addObject("lamps", chan.getNumber_lamp());
-        Category category = chan.getCategory();
-        Firm firm = chan.getFirm();
-        modelAndView.addObject("category", category.getName());
-        modelAndView.addObject("firm", firm.getName());
+        modelAndView.addObject("category",chan.getCategory().getName());
+        modelAndView.addObject("firm",  chan.getFirm().getName());
         modelAndView.addObject("info", chan.getInfo());
+        modelAndView.addObject("style",chandelier.getStyle().getName());
+        modelAndView.addObject("cartridge",chandelier.getCartridge().getName());
+        modelAndView.addObject("bodycolor",chandelier.getBodycolor().getName());
+        modelAndView.addObject("bodymaterial",chandelier.getBodymaterial().getName());
+        modelAndView.addObject("plafoncolor",chandelier.getPlafoncolor().getName());
+        modelAndView.addObject("plafonmaterial",chandelier.getPlafonmaterial().getName());
+
         List<OrderItem> orderItemList = new ArrayList<>(order.getOrderItems());
-        orderItemList.add(orderItem);
         modelAndView.addObject("orderItem", orderItemList);
         modelAndView.addObject("cost", order.getCost());
         modelAndView.addObject("modal", "$('.modal').modal('show');");

@@ -12,7 +12,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Material implements java.io.Serializable {
     private Integer materialId;
     private String Name;
-    private Set<Chandelier> chandeliers = new HashSet<Chandelier>(0);
+    private Set<Chandelier> bodychandeliers = new HashSet<Chandelier>(0);
+    private Set<Chandelier> plafonchandeliers = new HashSet<Chandelier>(0);
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -35,11 +36,21 @@ public class Material implements java.io.Serializable {
     }
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "bodymaterial")
-    public Set<Chandelier> getChandeliers() {
-        return chandeliers;
+    public Set<Chandelier> getBodyChandeliers() {
+        return bodychandeliers;
     }
 
-    public void setChandeliers(Set<Chandelier> chandeliers) {
-        this.chandeliers = chandeliers;
+    public void setBodyChandeliers(Set<Chandelier> chandeliers) {
+        this.bodychandeliers = chandeliers;
     }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "plafonmaterial")
+    public Set<Chandelier> getPlafonChandeliers() {
+        return plafonchandeliers;
+    }
+
+    public void setPlafonChandeliers(Set<Chandelier> chandeliers) {
+        this.plafonchandeliers = chandeliers;
+    }
+
 }
